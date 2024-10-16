@@ -1,46 +1,3 @@
-<template>
-  <Table>
-    <TableHeader>
-      <TableRow>
-        <TableHead>Date</TableHead>
-        <TableHead>User ID</TableHead>
-        <TableHead>Customer Name</TableHead>
-        <TableHead>Agent Name</TableHead>
-        <TableHead>Category</TableHead>
-        <TableHead>Type</TableHead>
-        <TableHead>Last Conversation</TableHead>
-        <TableHead>Customer Feedback</TableHead>
-        <TableHead>Agent Action</TableHead>
-        <TableHead>Action</TableHead>
-      </TableRow>
-    </TableHeader>
-    <TableBody>
-      <TableRow
-        v-for="(row, index) in data"
-        :key="index"
-        :class="{ 'bg-gray-100 text-slate-900': index % 2 === 0 }"
-      >
-        <TableCell>{{ row.date }}</TableCell>
-        <TableCell>{{ row.userId }}</TableCell>
-        <TableCell>{{ row.customerName }}</TableCell>
-        <TableCell>{{ row.agentName }}</TableCell>
-        <TableCell>{{ row.category }}</TableCell>
-        <TableCell>{{ row.type }}</TableCell>
-        <TableCell>{{ row.lastConversation }}</TableCell>
-        <TableCell>
-          <Badge  variant="secondary">{{ row.customerFeedback }}</Badge>
-        </TableCell>
-        <TableCell>
-          <Badge  variant="secondary">{{ row.agentAction }}</Badge>
-        </TableCell>
-        <TableCell>
-          <Button variant="link">View</Button>
-        </TableCell>
-      </TableRow>
-    </TableBody>
-  </Table>
-</template>
-
 <script setup lang="ts">
 import {
   Table,
@@ -53,6 +10,7 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { getBadgeColor } from "@/utils/get-badge-color";
 
 interface LoungeVisitData {
   date: string;
@@ -102,5 +60,53 @@ const data: LoungeVisitData[] = [
   },
 ];
 </script>
+<template>
+  <Table>
+    <TableHeader class="bg-[#A5A5A8]">
+      <TableRow>
+        <TableHead class="table-header">Date</TableHead>
+        <TableHead class="table-header">User ID</TableHead>
+        <TableHead class="table-header">Customer Name</TableHead>
+        <TableHead class="table-header">Agent Name</TableHead>
+        <TableHead class="table-header">Category</TableHead>
+        <TableHead class="table-header">Type</TableHead>
+        <TableHead class="table-header">Last Conversation</TableHead>
+        <TableHead class="table-header">Customer Feedback</TableHead>
+        <TableHead class="table-header">Agent Action</TableHead>
+        <TableHead class="table-header">Action</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow
+        v-for="(row, index) in data"
+        :key="index"
+        :class="{ 'bg-gray-100 text-slate-900': index % 2 === 0 }"
+      >
+        <TableCell>{{ row.date }}</TableCell>
+        <TableCell>{{ row.userId }}</TableCell>
+        <TableCell>{{ row.customerName }}</TableCell>
+        <TableCell>{{ row.agentName }}</TableCell>
+        <TableCell>{{ row.category }}</TableCell>
+        <TableCell>{{ row.type }}</TableCell>
+        <TableCell>{{ row.lastConversation }}</TableCell>
+        <TableCell>
+          <Badge :variant="getBadgeColor(row.customerFeedback)">{{
+            row.customerFeedback
+          }}</Badge>
+        </TableCell>
+        <TableCell>
+          <Badge :variant="getBadgeColor(row.agentAction)">{{ row.agentAction }}</Badge>
+        </TableCell>
+        <TableCell>
+          <Button variant="link">View</Button>
+        </TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</template>
 
-<style scoped></style>
+<style scoped>
+.table-header {
+  @apply text-[#0F151F] font-semibold text-base;
+}
+</style>

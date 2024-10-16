@@ -36,7 +36,7 @@ import { Search } from "lucide-vue-next";
       </div>
 
       <TabsContent value="call-logs">
-        <div class="bg-white flex flex-col gap-4 p-4">
+        <div class="bg-white flex flex-col gap-4 container-xy">
           <div class="flex justify-start items-center gap-2 md:gap-5">
             <p class="header">Calls</p>
             <select class="rounded border p-1 px-3 text-[#6D7D93]">
@@ -45,7 +45,7 @@ import { Search } from "lucide-vue-next";
             </select>
           </div>
 
-          <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+          <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             <StatsCard title="Total Calls" :count="4952" desc="Per week" />
             <StatsCard title="Faults" :count="2709" desc="8% Increase from last week" />
             <StatsCard title="Enquires" :count="549" desc="8% Decrease from last week" />
@@ -62,7 +62,7 @@ import { Search } from "lucide-vue-next";
       <TabsContent value="emails-logs"> email here. </TabsContent>
       <TabsContent value="chats"> chats here. </TabsContent>
       <TabsContent value="lounge">
-        <div class="bg-white flex flex-col gap-4 p-4">
+        <div class="bg-white flex flex-col gap-4 container-xy">
           <div class="flex justify-start items-center gap-2 md:gap-5">
             <p class="header">Lounge Visits</p>
             <select class="rounded border p-1 px-3 text-[#6D7D93]">
@@ -71,7 +71,7 @@ import { Search } from "lucide-vue-next";
             </select>
           </div>
 
-          <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+          <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             <StatsCard title="Total Visits" :count="24" desc="Per week" />
             <StatsCard title="Faults" :count="12" desc="8% Increase from last week" />
             <StatsCard title="Enquires" :count="7" desc="8% Decrease from last week" />

@@ -8,7 +8,7 @@ import Header from "@/components/Header/Header.vue";
     <SideBar />
 
     <!-- Main Content -->
-    <div class="flex-1">
+    <div class="w-full">
       <Header />
       <main class="bg-[#F3f3f3] h-[calc(100vh-80.8px)] overflow-y-auto">
         <div class="">
