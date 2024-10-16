@@ -82,3 +82,7 @@
 .container-xy {
   @apply p-4 lg:p-8;
 }
+
+.table-header {
+  @apply text-[#0F151F] font-semibold text-base text-center;
+}

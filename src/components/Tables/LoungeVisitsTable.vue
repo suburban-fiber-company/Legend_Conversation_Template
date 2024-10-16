@@ -117,8 +117,4 @@ const data: LoungeVisitData[] = [
   </Table>
 </template>
 
-<style scoped>
-.table-header {
-  @apply text-[#0F151F] font-semibold text-base;
-}
-</style>
+<style scoped></style>

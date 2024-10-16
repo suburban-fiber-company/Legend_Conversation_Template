@@ -9,7 +9,7 @@ import { Search } from "lucide-vue-next";
 
 <template>
   <Tabs default-value="lounge" class="w-full">
-    <div class="flex flex-col">
+    <div class="flex flex-col gap-4">
       <div class="flex flex-col gap-4 container-xy">
         <TabsList class="w-full bg-white border border-[#D7D7D7] justify-start">
           <TabsTrigger theme="outline" value="call-logs">

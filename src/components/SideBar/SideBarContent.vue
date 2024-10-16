@@ -24,7 +24,7 @@ const workSpaceSubmenuLinks: RouteProps[] = [
       </template>
     </sidebar-link>
 
-    <sidebar-link to="#" name="Obligations">
+    <sidebar-link :to="ROUTES.Obligations" name="Obligations">
       <template #icon>
         <LayoutList class="h-5 w-5" />
       </template>
