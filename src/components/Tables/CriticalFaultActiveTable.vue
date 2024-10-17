@@ -18,39 +18,32 @@ const tableData = ref([
     date: "20 Aug 2024",
     time: "9:00",
     name: "Excel Splitter",
-    critical_fmn1: "Not triggered",
-    critical_fmn2: "Triggered",
-    critical_fmnX: "Not triggered",
-    critical_fmr: "Not triggered",
+    notification: "CRITICAL_FMN 2",
     expectedResolutionDate: "20 Aug 2024",
     expectedResolutionTime: "3:00",
     numberOfCustomers: 4,
+    color: "success" as const,
   },
   {
     date: "20 Aug 2024",
     time: "10:00",
     name: "Cosgrove Splitter 1",
-    critical_fmn1: "Not triggered",
-    critical_fmn2: "Triggered",
-    critical_fmnX: "Not Required",
-    critical_fmr: "Triggered",
+    notification: "CRITICAL_FMN X",
     expectedResolutionDate: "20 Aug 2024",
     expectedResolutionTime: "3:00",
     numberOfCustomers: 1,
+    color: "warning" as const,
   },
 ]);
 </script>
 <template>
-  <Table class="w-full">
+  <Table border class="w-full">
     <TableHeader class="bg-[#A5A5A8]">
       <TableRow>
         <TableHead class="table-header">Date</TableHead>
         <TableHead class="table-header">Time</TableHead>
         <TableHead class="table-header">Name</TableHead>
-        <TableHead class="table-header">Critical_FMN 1</TableHead>
-        <TableHead class="table-header">Critical_FMN 2</TableHead>
-        <TableHead class="table-header">Critical_FMN X</TableHead>
-        <TableHead class="table-header">Critical_FMR</TableHead>
+        <TableHead class="table-header">Notification</TableHead>
         <TableHead class="table-header">Expected Resolution Date</TableHead>
         <TableHead class="table-header">Expected Resolution Time</TableHead>
         <TableHead class="table-header">Number of Customers</TableHead>
@@ -61,34 +54,23 @@ const tableData = ref([
       <TableRow
         v-for="(row, index) in tableData"
         :key="index"
-        :class="{ 'bg-gray-100 text-slate-900': index % 2 === 0 }"
+        :color="row.color"
+        base="colored"
       >
         <TableCell class="text-center">{{ row.date }}</TableCell>
         <TableCell class="text-center">{{ row.time }}</TableCell>
         <TableCell class="text-center">{{ row.name }}</TableCell>
-        <TableCell class="text-center">
-          <Badge :variant="getBadgeColor(row.critical_fmn1)">{{
-            row.critical_fmn1
-          }}</Badge>
-        </TableCell>
-        <TableCell class="text-center">
-          <Badge :variant="getBadgeColor(row.critical_fmn2)">{{
-            row.critical_fmn2
-          }}</Badge>
-        </TableCell>
-        <TableCell class="text-center">
-          <Badge :variant="getBadgeColor(row.critical_fmnX)">{{
-            row.critical_fmnX
-          }}</Badge>
-        </TableCell>
-        <TableCell class="text-center">
-          <Badge :variant="getBadgeColor(row.critical_fmr)">{{
-            row.critical_fmr
-          }}</Badge>
-        </TableCell>
-        <TableCell class="text-center">{{
-          row.expectedResolutionDate
-        }}</TableCell>
+        <TableCell
+          :class="[
+            'text-center',
+            {
+              'text-[#1F659C]': index % 2 == 0,
+              'text-[#00ACAC]': index % 2 !== 0,
+            },
+          ]"
+          >{{ row.notification }}</TableCell
+        >
+        <TableCell class="text-center">{{ row.expectedResolutionDate }}</TableCell>
         <TableCell class="text-center">{{
           row.expectedResolutionTime
         }}</TableCell>

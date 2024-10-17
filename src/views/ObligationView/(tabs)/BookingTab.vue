@@ -6,6 +6,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
+  TableRowVariants,
 } from "@/components/ui/table";
 import { computed, ref } from "vue";
 import SuccessModal from "@/components/Modals/SuccessModal.vue";
@@ -23,6 +24,7 @@ interface TableData {
   bookingDate: string;
   durationOfFault: string;
   action: string;
+  color: TableRowVariants['color'];
 }
 
 const tableData: TableData[] = [
@@ -35,6 +37,7 @@ const tableData: TableData[] = [
     bookingDate: "2024-10-15",
     durationOfFault: "2 days",
     action: "Pending",
+    color: "danger"
   },
   {
     id: "2",
@@ -45,6 +48,7 @@ const tableData: TableData[] = [
     bookingDate: "2024-10-12",
     durationOfFault: "1 day",
     action: "Completed",
+    color: "warning"
   },
   {
     id: "3",
@@ -55,6 +59,7 @@ const tableData: TableData[] = [
     bookingDate: "2024-10-10",
     durationOfFault: "3 days",
     action: "In Progress",
+    color: "warning"
   },
   {
     id: "4",
@@ -65,6 +70,7 @@ const tableData: TableData[] = [
     bookingDate: "2024-10-08",
     durationOfFault: "2 days",
     action: "Pending",
+    color: "danger"
   },
   {
     id: "5",
@@ -75,6 +81,7 @@ const tableData: TableData[] = [
     bookingDate: "2024-10-05",
     durationOfFault: "1 day",
     action: "Completed",
+    color: "success"
   },
   {
     id: "6",
@@ -85,6 +92,7 @@ const tableData: TableData[] = [
     bookingDate: "2024-10-03",
     durationOfFault: "3 days",
     action: "In Progress",
+    color: "warning"
   },
 ];
 
@@ -115,7 +123,7 @@ const setBookingId = (v?: string) => (bookingId.value = v);
     </div>
   </div>
 
-  <Table>
+  <Table border>
     <TableHeader class="bg-[#A5A5A8]">
       <TableRow>
         <TableHead class="table-header">Name</TableHead>
@@ -131,7 +139,8 @@ const setBookingId = (v?: string) => (bookingId.value = v);
       <TableRow
         v-for="(row, index) in tableData"
         :key="index"
-        :class="{ 'bg-gray-100 text-slate-900': index % 2 === 0 }"
+        :color="row.color"
+        base="colored"
       >
         <TableCell class="text-center">{{ row.name }}</TableCell>
         <TableCell class="text-center">{{ row.phoneNumber }}</TableCell>

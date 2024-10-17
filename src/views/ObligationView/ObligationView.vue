@@ -3,6 +3,7 @@ import BookingTab from "./(tabs)/BookingTab.vue";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import EscalationTab from "./(tabs)/EscalationTab.vue";
 import CriticalFaultTab from "./(tabs)/CriticalFaultTab.vue";
+import MyTicketsTab from "./(tabs)/MyTicketsTab.vue";
 </script>
 
 <template>
@@ -25,10 +26,18 @@ import CriticalFaultTab from "./(tabs)/CriticalFaultTab.vue";
         <div id="teleport-secondary-tablist"></div>
       </div>
 
-      <TabsContent  class="flex flex-col gap-4 w-full" value="my-tickets"> tickets </TabsContent>
-      <TabsContent  class="flex flex-col gap-4 w-full" value="bookings"> <BookingTab /> </TabsContent>
-      <TabsContent  class="flex flex-col gap-4 w-full" value="critical-fault"> <CriticalFaultTab /> </TabsContent>
-      <TabsContent  class="flex flex-col gap-4 w-full" value="escalations"> <EscalationTab /> </TabsContent>
+      <TabsContent class="flex flex-col gap-4 w-full" value="my-tickets">
+        <MyTicketsTab />
+      </TabsContent>
+      <TabsContent class="flex flex-col gap-4 w-full" value="bookings">
+        <BookingTab />
+      </TabsContent>
+      <TabsContent class="flex flex-col gap-4 w-full" value="critical-fault">
+        <CriticalFaultTab />
+      </TabsContent>
+      <TabsContent class="flex flex-col gap-4 w-full" value="escalations">
+        <EscalationTab />
+      </TabsContent>
     </div>
   </Tabs>
 </template>

@@ -6,6 +6,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
+  TableRowVariants,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -22,6 +23,7 @@ interface TableData {
   type: string;
   lastConversationMessageText: string;
   priority: string;
+  color: TableRowVariants["color"];
 }
 
 const tableData: TableData[] = [
@@ -33,6 +35,7 @@ const tableData: TableData[] = [
     type: "Inquiry",
     lastConversationMessageText: "Interested in your new product line.",
     priority: "High",
+    color: 'danger'
   },
   {
     date: "2024-10-12",
@@ -42,6 +45,7 @@ const tableData: TableData[] = [
     type: "Issue",
     lastConversationMessageText: "Having trouble with my order.",
     priority: "Medium",
+    color: 'warning'
   },
   {
     date: "2024-10-10",
@@ -51,6 +55,7 @@ const tableData: TableData[] = [
     type: "Suggestion",
     lastConversationMessageText: "Would love to see more color options.",
     priority: "Low",
+    color: 'success'
   },
   {
     date: "2024-10-08",
@@ -60,6 +65,7 @@ const tableData: TableData[] = [
     type: "Complaint",
     lastConversationMessageText: "Received a damaged product.",
     priority: "High",
+    color: 'danger'
   },
   {
     date: "2024-10-05",
@@ -69,6 +75,7 @@ const tableData: TableData[] = [
     type: "Inquiry",
     lastConversationMessageText: "Need help with my account.",
     priority: "Medium",
+    color: 'warning'
   },
   {
     date: "2024-10-03",
@@ -78,6 +85,7 @@ const tableData: TableData[] = [
     type: "Suggestion",
     lastConversationMessageText: "Consider offering free shipping.",
     priority: "Low",
+    color: 'success'
   },
 ];
 </script>
@@ -95,12 +103,10 @@ const tableData: TableData[] = [
           <Search :size="14" />
         </Button>
       </div>
-      <Button variant="outline-default" class="">
-        Export
-      </Button>
+      <Button variant="outline-default" class=""> Export </Button>
     </div>
   </div>
-  <Table>
+  <Table border>
     <TableHeader class="bg-[#A5A5A8]">
       <TableRow>
         <TableHead class="table-header">Date</TableHead>
@@ -117,7 +123,8 @@ const tableData: TableData[] = [
       <TableRow
         v-for="(row, index) in tableData"
         :key="index"
-        :class="{ 'bg-gray-100 text-slate-900': index % 2 === 0 }"
+        :color="row.color"
+        base="colored"
       >
         <TableCell class="text-center">{{ row.date }}</TableCell>
         <TableCell class="text-center">{{ row.customerName }}</TableCell>

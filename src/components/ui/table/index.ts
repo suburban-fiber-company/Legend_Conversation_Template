@@ -17,7 +17,8 @@ export const tableRowVariants = cva(
         variants: {
             color: {
                 default: '',
-                gray: 'bg-gray-100 text-slate-900',
+                gray: 'bg-[#F3F3F3] text-slate-900',
+                white: 'bg-white text-slate-900',
                 danger: 'bg-[#FFCCCC] text-[#0F151F]',
                 warning: 'bg-[#F7F1D3] text-[#0F151F]',
                 success: 'bg-[#CDEAE1] text-[#0F151F]',

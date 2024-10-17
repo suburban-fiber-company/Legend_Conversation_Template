@@ -5,6 +5,7 @@ export const getBadgeColor = (value: string): BadgeVariants['variant'] => {
         case 'resolved':
         case 'satisfied':
         case 'low':
+        case 'triggered':
             return 'success';
 
         case 'follow-up':
@@ -18,7 +19,11 @@ export const getBadgeColor = (value: string): BadgeVariants['variant'] => {
 
         case 'frustrated':
         case 'high':
+        case 'not triggered':
             return 'danger';
+
+        case 'not required':
+            return 'gray';
 
         case 'scheduled':
             return 'danger';
