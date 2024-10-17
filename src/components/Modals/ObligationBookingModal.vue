@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, ref, watch } from "vue";
+import { computed, ref } from "vue";
 import MonthYearCalendar from "../Calendar/MonthYearCalendar.vue";
 import BaseModal from "./BaseModal.vue";
 import { type DateValue } from "@internationalized/date";

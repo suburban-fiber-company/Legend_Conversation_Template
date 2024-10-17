@@ -4,18 +4,20 @@ export const getBadgeColor = (value: string): BadgeVariants['variant'] => {
     switch (value.toLowerCase()) {
         case 'resolved':
         case 'satisfied':
+        case 'low':
             return 'success';
 
         case 'follow-up':
         case 'follow up':
         case 'dissatisfied but manageable':
+        case 'medium':
             return 'warning';
 
         case 'frustrated unmanageable':
             return 'danger-overload';
 
         case 'frustrated':
-        case 'escalated':
+        case 'high':
             return 'danger';
 
         case 'scheduled':

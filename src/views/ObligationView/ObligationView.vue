@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import StatsCard from "@/components/Dashboard/StatsCard.vue";
-import LoungeVisitsTable from "@/components/Tables/LoungeVisitsTable.vue";
 import Button from "@/components/ui/button/Button.vue";
 import Input from "@/components/ui/input/Input.vue";
 import BookingTab from "./(tabs)/BookingTab.vue";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Search } from "lucide-vue-next";
+import EscalationTab from "./(tabs)/EscalationTab.vue";
 </script>
 
 <template>
@@ -13,12 +12,16 @@ import { Search } from "lucide-vue-next";
     <div class="flex flex-col gap-4">
       <div class="flex flex-col gap-4">
         <TabsList class="w-full bg-white border border-[#D7D7D7] justify-start">
-          <TabsTrigger theme="outline" value="my-tickets"> My Tickets </TabsTrigger>
+          <TabsTrigger theme="outline" value="my-tickets">
+            My Tickets
+          </TabsTrigger>
           <TabsTrigger theme="outline" value="bookings"> Bookings </TabsTrigger>
           <TabsTrigger theme="outline" value="critical-fault">
             Critical Fault
           </TabsTrigger>
-          <TabsTrigger theme="outline" value="escalations"> Escalations </TabsTrigger>
+          <TabsTrigger theme="outline" value="escalations">
+            Escalations
+          </TabsTrigger>
         </TabsList>
 
         <div class="w-full flex gap-4 justify-end">
@@ -40,7 +43,7 @@ import { Search } from "lucide-vue-next";
       <TabsContent value="my-tickets"> tickets </TabsContent>
       <TabsContent value="bookings"> <BookingTab /> </TabsContent>
       <TabsContent value="critical-fault"> critical here. </TabsContent>
-      <TabsContent value="escalations"> escalations </TabsContent>
+      <TabsContent value="escalations"> <EscalationTab /> </TabsContent>
     </div>
   </Tabs>
 </template>
