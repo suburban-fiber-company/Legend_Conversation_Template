@@ -51,7 +51,7 @@ const formatter = useDateFormatter('en')
         <Select
           :default-value="placeholder.month.toString()"
           @update:model-value="
-            (v) => {
+            (v: any) => {
               if (!v || !placeholder) return;
               if (Number(v) === placeholder?.month) return;
               placeholder = placeholder.set({
@@ -77,7 +77,7 @@ const formatter = useDateFormatter('en')
         <Select
           :default-value="placeholder.year.toString()"
           @update:model-value="
-            (v) => {
+            (v: any) => {
               if (!v || !placeholder) return;
               if (Number(v) === placeholder?.year) return;
               placeholder = placeholder.set({
@@ -110,7 +110,7 @@ const formatter = useDateFormatter('en')
       <CalendarGrid v-for="month in grid" :key="month.value.toString()">
         <CalendarGridHead>
           <CalendarGridRow>
-            <CalendarHeadCell v-for="day in weekDays" :key="day">
+            <CalendarHeadCell v-for="day in weekDays" :key="day" class="w-full">
               {{ day }}
             </CalendarHeadCell>
           </CalendarGridRow>
@@ -125,6 +125,7 @@ const formatter = useDateFormatter('en')
               v-for="weekDate in weekDates"
               :key="weekDate.toString()"
               :date="weekDate"
+              class="w-full"
             >
               <CalendarCellTrigger :day="weekDate" :month="month.value" />
             </CalendarCell>

@@ -89,7 +89,8 @@ module.exports = {
         "collapsible-up": "collapsible-up 0.2s ease-in-out",
       },
       fontFamily: {
-        'source-sans-pro': ['Source Sans Pro', 'Poppins', 'Inter', 'serif', 'monospace']
+        'source-sans-pro': ['Source Sans Pro', 'Poppins', 'Inter', 'serif', 'monospace'],
+        'inter': ['Inter', 'sans-serif', "Source Sans Pro", 'Poppins']
       }
     },
   },

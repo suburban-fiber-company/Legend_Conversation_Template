@@ -19,10 +19,10 @@ const forwardedProps = useForwardProps(delegatedProps)
   <CalendarCellTrigger
     :class="cn(
       buttonVariants({ variant: 'ghost' }),
-      'h-9 w-9 p-0 font-normal',
-      '[&[data-today]:not([data-selected])]:bg-accent [&[data-today]:not([data-selected])]:text-accent-foreground',
+      'h-9 w-9 p-0 rounded-full  font-normal',
+      '[&[data-today]:not([data-selected])]:bg-[#F8F7FA] [&[data-today]:not([data-selected])]:text-[#FD4F00]',
       // Selected
-      'data-[selected]:bg-primary data-[selected]:text-primary-foreground data-[selected]:opacity-100 data-[selected]:hover:bg-primary data-[selected]:hover:text-primary-foreground data-[selected]:focus:bg-primary data-[selected]:focus:text-primary-foreground',
+      'data-[selected]:bg-[#FD4F00] data-[selected]:text-white data-[selected]:opacity-100 data-[selected]:hover:bg-orange-500 data-[selected]:hover:text-primary-foreground data-[selected]:focus:bg-[#FD4F00] data-[selected]:focus:text-primary-foreground',
       // Disabled
       'data-[disabled]:text-muted-foreground data-[disabled]:opacity-50',
       // Unavailable

@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { computed, ref, watch } from "vue";
 import SuccessModal from "@/components/Modals/SuccessModal.vue";
+import ObligationBookingModal from "@/components/Modals/ObligationBookingModal.vue";
 
 interface TableData {
   id: string;
@@ -91,9 +92,9 @@ const openSuccessDialog = computed(() => !!sendingEmail.value);
 const handleCloseDialog = (isOpen: boolean = false) => {
   if (!isOpen) setSendingEmail();
 };
+
 const bookingId = ref<string | undefined | null>(null);
-const setBookingId = (v?: string) => (sendingEmail.value = v);
-const openBookingDialog = computed(() => !!sendingEmail.value);
+const setBookingId = (v?: string) => (bookingId.value = v);
 </script>
 
 <template>
@@ -115,17 +116,21 @@ const openBookingDialog = computed(() => !!sendingEmail.value);
         :key="index"
         :class="{ 'bg-gray-100 text-slate-900': index % 2 === 0 }"
       >
-        <TableCell>{{ row.name }}</TableCell>
-        <TableCell>{{ row.phoneNumber }}</TableCell>
-        <TableCell>{{ row.emailAddress }}</TableCell>
-        <TableCell>{{ row.activity }}</TableCell>
-        <TableCell>{{ row.bookingDate }}</TableCell>
-        <TableCell>{{ row.durationOfFault }}</TableCell>
-        <TableCell class="flex max-sm:flex-col gap-2">
-          <Button @click="setSendingEmail(row.emailAddress)" variant="outline-default"
+        <TableCell class="text-center">{{ row.name }}</TableCell>
+        <TableCell class="text-center">{{ row.phoneNumber }}</TableCell>
+        <TableCell class="text-center">{{ row.emailAddress }}</TableCell>
+        <TableCell class="text-center">{{ row.activity }}</TableCell>
+        <TableCell class="text-center">{{ row.bookingDate }}</TableCell>
+        <TableCell class="text-center">{{ row.durationOfFault }}</TableCell>
+        <TableCell
+          class="flex justify-center items-center max-sm:flex-col gap-2"
+        >
+          <Button
+            @click="setSendingEmail(row.emailAddress)"
+            variant="outline-default"
             >Resend Email</Button
           >
-          <Button variant="main">Book</Button>
+          <Button @click="setBookingId(row.id)" variant="main">Book</Button>
         </TableCell>
       </TableRow>
     </TableBody>
@@ -134,9 +139,14 @@ const openBookingDialog = computed(() => !!sendingEmail.value);
   <SuccessModal
     :close="handleCloseDialog"
     close-text="Back"
-    desc="You have successfully sent an email"
+    desc="You have successfully booked an appointment"
     :is-open="openSuccessDialog"
     @update:is-open="handleCloseDialog"
+  />
+
+  <ObligationBookingModal
+    :booking-id="bookingId"
+    @update:is-open="(s) => s || setBookingId()"
   />
 </template>
 
