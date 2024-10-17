@@ -11,6 +11,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ROUTES } from "@/router";
 import { getBadgeColor } from "@/utils/get-badge-color";
+import Input from "@/components/ui/input/Input.vue";
+import { Search } from "lucide-vue-next";
 
 interface TableData {
   date: string;
@@ -81,6 +83,23 @@ const tableData: TableData[] = [
 </script>
 
 <template>
+  <div class="w-full flex gap-4 -mt-9 justify-end">
+    <div class="flex gap-1 justify-end">
+      <select class="rounded px-3">
+        <option>Option</option>
+        <option>... Others</option>
+      </select>
+      <div class="flex relative">
+        <Input placeholder="Search" />
+        <Button size="icon" class="rounded-l-none absolute top-0 right-0">
+          <Search :size="14" />
+        </Button>
+      </div>
+      <Button variant="outline-default" class="">
+        Export
+      </Button>
+    </div>
+  </div>
   <Table>
     <TableHeader class="bg-[#A5A5A8]">
       <TableRow>

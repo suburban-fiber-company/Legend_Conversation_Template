@@ -7,10 +7,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
-import { computed, ref, watch } from "vue";
+import { computed, ref } from "vue";
 import SuccessModal from "@/components/Modals/SuccessModal.vue";
 import ObligationBookingModal from "@/components/Modals/ObligationBookingModal.vue";
+import Button from "@/components/ui/button/Button.vue";
+import Input from "@/components/ui/input/Input.vue";
+import { Search } from "lucide-vue-next";
 
 interface TableData {
   id: string;
@@ -98,6 +100,21 @@ const setBookingId = (v?: string) => (bookingId.value = v);
 </script>
 
 <template>
+  <div class="w-full flex gap-4 -mt-3 justify-end">
+    <div class="flex gap-1 justify-end">
+      <select class="rounded px-3">
+        <option>Today</option>
+        <option>... Others</option>
+      </select>
+      <div class="flex relative">
+        <Input placeholder="Search" />
+        <Button size="icon" class="rounded-l-none absolute top-0 right-0">
+          <Search :size="14" />
+        </Button>
+      </div>
+    </div>
+  </div>
+
   <Table>
     <TableHeader class="bg-[#A5A5A8]">
       <TableRow>

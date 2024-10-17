@@ -1,25 +1,31 @@
 <script setup lang="ts">
-import { type HTMLAttributes, computed } from 'vue'
-import { TabsTrigger, type TabsTriggerProps, useForwardProps } from 'radix-vue'
-import { cn } from '@/lib/utils'
-import { tabVariants, TabVariants } from '.';
+import { type HTMLAttributes, computed } from "vue";
+import { TabsTrigger, type TabsTriggerProps, useForwardProps } from "radix-vue";
+import { cn } from "@/lib/utils";
+import { tabVariants, TabVariants } from ".";
 
-const props = defineProps<TabsTriggerProps & {
-  class?: HTMLAttributes['class'],
-  theme?: TabVariants['theme'],
- }>()
+const props = defineProps<
+  TabsTriggerProps & {
+    class?: HTMLAttributes["class"];
+    theme?: TabVariants["theme"];
+    base?: TabVariants["base"];
+  }
+>();
 
 const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props
+  const { class: _, ...delegated } = props;
 
-  return delegated
-})
+  return delegated;
+});
 
-const forwardedProps = useForwardProps(delegatedProps)
+const forwardedProps = useForwardProps(delegatedProps);
 </script>
 
 <template>
-  <TabsTrigger v-bind="forwardedProps" :class="cn(tabVariants({ theme }), props.class)">
+  <TabsTrigger
+    v-bind="forwardedProps"
+    :class="cn(tabVariants({ theme, base }), props.class)"
+  >
     <span class="truncate">
       <slot />
     </span>

@@ -1,16 +1,14 @@
 <script setup lang="ts">
-import Button from "@/components/ui/button/Button.vue";
-import Input from "@/components/ui/input/Input.vue";
 import BookingTab from "./(tabs)/BookingTab.vue";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Search } from "lucide-vue-next";
 import EscalationTab from "./(tabs)/EscalationTab.vue";
+import CriticalFaultTab from "./(tabs)/CriticalFaultTab.vue";
 </script>
 
 <template>
   <Tabs default-value="bookings" class="w-full container-xy">
-    <div class="flex flex-col gap-4">
-      <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-1">
+      <div class="flex flex-col gap-1">
         <TabsList class="w-full bg-white border border-[#D7D7D7] justify-start">
           <TabsTrigger theme="outline" value="my-tickets">
             My Tickets
@@ -24,26 +22,13 @@ import EscalationTab from "./(tabs)/EscalationTab.vue";
           </TabsTrigger>
         </TabsList>
 
-        <div class="w-full flex gap-4 justify-end">
-          <div class="flex gap-1 justify-end">
-            <select class="rounded px-3">
-              <option>Today</option>
-              <option>... Others</option>
-            </select>
-            <div class="flex relative">
-              <Input placeholder="Search" />
-              <Button size="icon" class="rounded-l-none absolute top-0 right-0">
-                <Search :size="14" />
-              </Button>
-            </div>
-          </div>
-        </div>
+        <div id="teleport-secondary-tablist"></div>
       </div>
 
-      <TabsContent value="my-tickets"> tickets </TabsContent>
-      <TabsContent value="bookings"> <BookingTab /> </TabsContent>
-      <TabsContent value="critical-fault"> critical here. </TabsContent>
-      <TabsContent value="escalations"> <EscalationTab /> </TabsContent>
+      <TabsContent  class="flex flex-col gap-4 w-full" value="my-tickets"> tickets </TabsContent>
+      <TabsContent  class="flex flex-col gap-4 w-full" value="bookings"> <BookingTab /> </TabsContent>
+      <TabsContent  class="flex flex-col gap-4 w-full" value="critical-fault"> <CriticalFaultTab /> </TabsContent>
+      <TabsContent  class="flex flex-col gap-4 w-full" value="escalations"> <EscalationTab /> </TabsContent>
     </div>
   </Tabs>
 </template>
