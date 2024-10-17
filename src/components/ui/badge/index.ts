@@ -12,11 +12,12 @@ export const badgeVariants = cva(
         secondary:
           'border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80',
         success:
-          'border-[#C5E2D9] text-green-600  hover:bg-green-200',
-        danger:
-          'border-[#F7C4C4] text-red-600 hover:bg-destructive/30',
+          'border-[#34d399] bg-[#ecfdf5] text-[#059669]  hover:bg-green-200',
+        danger: 'border-[#F87171] bg-[#FEF2F2] text-[#dc2626] hover:bg-destructive/30',
+        gray: 'border-[#9CA3AF] bg-[#F3F4F6] text-[#374151] hover:bg-secondary/30',
+        'danger-overload': 'border-[#B50000] bg-[#F0A3A3] text-[#B50000] hover:bg-destructive/30',
         warning:
-          'border-[#EFE9CB] text-orange-600  hover:bg-orange-200',
+          'border-[#FBBF24] bg-[#F2EEDF] text-[#D97706]  hover:bg-orange-200',
         destructive:
           'border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80',
         outline: 'text-foreground',

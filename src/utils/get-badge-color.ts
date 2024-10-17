@@ -12,8 +12,13 @@ export const getBadgeColor = (value: string): BadgeVariants['variant'] => {
             return 'warning';
 
         case 'frustrated unmanageable':
+            return 'danger-overload';
+
         case 'frustrated':
         case 'escalated':
+            return 'danger';
+
+        case 'scheduled':
             return 'danger';
 
 

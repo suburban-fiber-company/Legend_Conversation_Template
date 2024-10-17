@@ -7,6 +7,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
+  TableRowVariants,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -22,6 +23,7 @@ interface LoungeVisitData {
   lastConversation: string;
   customerFeedback: string;
   agentAction: string;
+  color: TableRowVariants["color"];
 }
 
 const data: LoungeVisitData[] = [
@@ -35,6 +37,7 @@ const data: LoungeVisitData[] = [
     lastConversation: "Customer called to find out why he was on LOS",
     customerFeedback: "Satisfied",
     agentAction: "Resolved",
+    color: "success",
   },
   {
     date: "Aug 13, 2024 12:30PM",
@@ -46,6 +49,7 @@ const data: LoungeVisitData[] = [
     lastConversation: "Customer called to find out why he was on LOS",
     customerFeedback: "Satisfied",
     agentAction: "Resolved",
+    color: "danger",
   },
   {
     date: "Aug 13, 2024 12:30PM",
@@ -57,12 +61,13 @@ const data: LoungeVisitData[] = [
     lastConversation: "Customer called to find out why he was on LOS",
     customerFeedback: "Frustrated Unmanageable",
     agentAction: "Follow-up",
+    color: "warning",
   },
 ];
 </script>
 <template>
   <Table>
-    <TableHeader class="bg-[#A5A5A8]">
+    <TableHeader class="bg-[#E4E4E5]">
       <TableRow>
         <TableHead class="table-header">Date</TableHead>
         <TableHead class="table-header">User ID</TableHead>
@@ -80,22 +85,29 @@ const data: LoungeVisitData[] = [
       <TableRow
         v-for="(row, index) in data"
         :key="index"
-        :class="{ 'bg-gray-100 text-slate-900': index % 2 === 0 }"
+        :color="row.color"
+        base="colored"
       >
         <TableCell>{{ row.date }}</TableCell>
-        <TableCell>{{ row.userId }}</TableCell>
+        <TableCell class="text-[#4B5054] text-base">{{ row.userId }}</TableCell>
         <TableCell>{{ row.customerName }}</TableCell>
         <TableCell>{{ row.agentName }}</TableCell>
         <TableCell>{{ row.category }}</TableCell>
         <TableCell>{{ row.type }}</TableCell>
         <TableCell>{{ row.lastConversation }}</TableCell>
         <TableCell>
-          <Badge :variant="getBadgeColor(row.customerFeedback)">{{
-            row.customerFeedback
-          }}</Badge>
+          <Badge
+            class="w-fit text-center"
+            :variant="getBadgeColor(row.customerFeedback)"
+            >{{ row.customerFeedback }}</Badge
+          >
         </TableCell>
         <TableCell>
-          <Badge :variant="getBadgeColor(row.agentAction)">{{ row.agentAction }}</Badge>
+          <Badge
+            class="w-fit text-center"
+            :variant="getBadgeColor(row.agentAction)"
+            >{{ row.agentAction }}</Badge
+          >
         </TableCell>
         <TableCell>
           <Button variant="link">View</Button>
