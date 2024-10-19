@@ -5,7 +5,6 @@ import Card from "@/components/ui/card/Card.vue";
 import {
   Select,
   SelectContent,
-  SelectItem,
   SelectLabel,
   SelectTrigger,
   SelectValue,
@@ -13,6 +12,13 @@ import {
 import { Label } from "@/components/ui/label";
 import { XIcon } from "lucide-vue-next";
 import { ROUTES } from "@/router";
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+
+const data = [
+  { label: "Customer Overall Experience", value: "7" },
+  { label: "Customer Experience with Agent", value: "Happy" },
+  { label: "Customer's Comment", value: "The service was great" },
+];
 </script>
 <template>
   <Card
@@ -71,7 +77,10 @@ import { ROUTES } from "@/router";
     </div>
 
     <div class="col-span-2 flex flex-col gap-4 items-center">
-      <div class="flex w-full gap-8 sm:gap-16 justify-between">
+      <div
+        v-if="$route.query.action == 'escalate'"
+        class="flex w-full gap-8 sm:gap-16 justify-between"
+      >
         <div class="flex flex-col gap-2 w-full">
           <Label for="responsible-unit">Responsible Unit</Label>
           <Select id="responsible-unit" class="w-full">
@@ -94,6 +103,22 @@ import { ROUTES } from "@/router";
             </SelectContent>
           </Select>
         </div>
+      </div>
+      <div v-if="$route.query.action == 'view'" class="w-full">
+        <Table>
+          <TableBody>
+            <TableRow
+              v-for="(row, index) in data"
+              :key="index"
+              base="colored"
+              class="border-0"
+              :color="index % 2 == 0 ? 'gray' : undefined"
+            >
+              <TableCell class="md:w-3/12 font-semibold text-[#4B5054]">{{ row.label }}</TableCell>
+              <TableCell class="text-[#4B5054]">{{ row.value }}</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </div>
       <Button class="w-full md:w-6/12 text-lg font-semibold" variant="main"
         >Escalate</Button

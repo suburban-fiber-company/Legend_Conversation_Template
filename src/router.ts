@@ -13,7 +13,7 @@ export const ROUTES = {
     Home: '/' as const,
     Conversations: '/conversations' as const,
     Obligations: '/obligations' as const,
-    ObligationExcalation: (pathId: string) => `/obligation/excalation/${pathId}` as const,
+    ObligationExcalation: (pathId: string, action?: 'escalate' | 'view') => `/obligation/excalation/${pathId}${action ? `?action=${action}` : ''}` as const,
     Ticket: (pathId: string) => `/obligation/ticket/${pathId}` as const,
 };
 

@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { getBadgeColor } from "@/utils/get-badge-color";
+import { ROUTES } from "@/router";
 
 interface LoungeVisitData {
   date: string;
@@ -110,7 +111,11 @@ const data: LoungeVisitData[] = [
           >
         </TableCell>
         <TableCell>
-          <Button variant="link">View</Button>
+          <router-link
+            :to="ROUTES.ObligationExcalation(String(index + 1), 'view')"
+          >
+            <Button variant="link">View</Button>
+          </router-link>
         </TableCell>
       </TableRow>
     </TableBody>

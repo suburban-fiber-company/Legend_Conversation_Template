@@ -35,7 +35,7 @@ const tableData: TableData[] = [
     type: "Inquiry",
     lastConversationMessageText: "Interested in your new product line.",
     priority: "High",
-    color: 'danger'
+    color: "danger",
   },
   {
     date: "2024-10-12",
@@ -45,7 +45,7 @@ const tableData: TableData[] = [
     type: "Issue",
     lastConversationMessageText: "Having trouble with my order.",
     priority: "Medium",
-    color: 'warning'
+    color: "warning",
   },
   {
     date: "2024-10-10",
@@ -55,7 +55,7 @@ const tableData: TableData[] = [
     type: "Suggestion",
     lastConversationMessageText: "Would love to see more color options.",
     priority: "Low",
-    color: 'success'
+    color: "success",
   },
   {
     date: "2024-10-08",
@@ -65,7 +65,7 @@ const tableData: TableData[] = [
     type: "Complaint",
     lastConversationMessageText: "Received a damaged product.",
     priority: "High",
-    color: 'danger'
+    color: "danger",
   },
   {
     date: "2024-10-05",
@@ -75,7 +75,7 @@ const tableData: TableData[] = [
     type: "Inquiry",
     lastConversationMessageText: "Need help with my account.",
     priority: "Medium",
-    color: 'warning'
+    color: "warning",
   },
   {
     date: "2024-10-03",
@@ -85,7 +85,7 @@ const tableData: TableData[] = [
     type: "Suggestion",
     lastConversationMessageText: "Consider offering free shipping.",
     priority: "Low",
-    color: 'success'
+    color: "success",
   },
 ];
 </script>
@@ -142,7 +142,9 @@ const tableData: TableData[] = [
         <TableCell
           class="flex justify-center items-center max-sm:flex-col gap-2"
         >
-          <router-link :to="ROUTES.ObligationExcalation(String(index + 1))">
+          <router-link
+            :to="ROUTES.ObligationExcalation(String(index + 1), 'escalate')"
+          >
             <Button variant="outline-default">View</Button>
           </router-link>
         </TableCell>
