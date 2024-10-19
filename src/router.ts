@@ -7,6 +7,7 @@ const HomeView = () => import('@/views/HomeView.vue');
 const ConversationView = () => import('@/views/ConversationView.vue');
 const ObligationView = () => import('@/views/ObligationView/ObligationView.vue');
 const ObligationDetailsView = () => import('@/views/ObligationView/ObligationDetailsView.vue');
+const TicketDetailsView = () => import('@/views/ObligationView/TicketDetailsView.vue');
 
 export const ROUTES = {
     Home: '/' as const,
@@ -21,7 +22,7 @@ const routes = [
     { path: ROUTES.Conversations, component: ConversationView, name: "Conversations" },
     { path: ROUTES.Obligations, component: ObligationView, name: "Obligations", meta: { layout: 'DefaultLayout' } }, // for custom layouts add the meta.layout prop
     { path: ROUTES.ObligationExcalation(':id'), component: ObligationDetailsView, name: "Obligation Details" },
-    { path: ROUTES.Ticket(':id'), component: ObligationDetailsView, name: "Ticket Details" },
+    { path: ROUTES.Ticket(':id'), component: TicketDetailsView, name: "Ticket Details" },
 ]
 
 export type RoutePaths = typeof routes[number]['path'];

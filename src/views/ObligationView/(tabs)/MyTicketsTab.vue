@@ -110,7 +110,7 @@ const tableData: TableData[] = [
         <TableHead class="table-header">Fault Type</TableHead>
         <TableHead class="table-header">Date</TableHead>
         <TableHead class="table-header">Note</TableHead>
-        <!-- <TableHead class="table-header">Action</TableHead> -->
+        <TableHead class="table-header">Action</TableHead>
       </TableRow>
     </TableHeader>
     <TableBody>
