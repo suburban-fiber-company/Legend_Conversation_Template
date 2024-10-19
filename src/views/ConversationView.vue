@@ -24,12 +24,12 @@ import { Search } from "lucide-vue-next";
 
         <div class="w-full flex gap-4 justify-end">
           <div class="flex gap-1 justify-end">
-            <select class="rounded px-3">
+            <select class="rounded text-lg px-3">
               <option>Today</option>
               <option>... Others</option>
             </select>
             <div class="flex relative">
-              <Input />
+              <Input class="text-lg" />
               <Button size="icon" class="rounded-l-none absolute top-0 right-0">
                 <Search :size="14" />
               </Button>

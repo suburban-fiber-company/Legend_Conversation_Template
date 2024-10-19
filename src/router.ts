@@ -13,13 +13,15 @@ export const ROUTES = {
     Conversations: '/conversations' as const,
     Obligations: '/obligations' as const,
     ObligationExcalation: (pathId: string) => `/obligation/excalation/${pathId}` as const,
+    Ticket: (pathId: string) => `/obligation/ticket/${pathId}` as const,
 };
 
 const routes = [
     { path: ROUTES.Home, component: HomeView, name: "My Workspace" },
     { path: ROUTES.Conversations, component: ConversationView, name: "Conversations" },
     { path: ROUTES.Obligations, component: ObligationView, name: "Obligations", meta: { layout: 'DefaultLayout' } }, // for custom layouts add the meta.layout prop
-    { path: ROUTES.ObligationExcalation(':id' as const), component: ObligationDetailsView, name: "Obligation Details" },
+    { path: ROUTES.ObligationExcalation(':id'), component: ObligationDetailsView, name: "Obligation Details" },
+    { path: ROUTES.Ticket(':id'), component: ObligationDetailsView, name: "Ticket Details" },
 ]
 
 export type RoutePaths = typeof routes[number]['path'];

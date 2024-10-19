@@ -93,12 +93,12 @@ const tableData: TableData[] = [
 <template>
   <div class="w-full flex gap-4 -mt-9 justify-end">
     <div class="flex gap-1 justify-end">
-      <select class="rounded px-3">
+      <select class="rounded text-lg px-3">
         <option>Option</option>
         <option>... Others</option>
       </select>
       <div class="flex relative">
-        <Input placeholder="Search" />
+        <Input class="text-lg" placeholder="Search" />
         <Button size="icon" class="rounded-l-none absolute top-0 right-0">
           <Search :size="14" />
         </Button>

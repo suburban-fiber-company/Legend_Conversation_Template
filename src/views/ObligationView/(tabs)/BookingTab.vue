@@ -114,7 +114,7 @@ const setBookingId = (v?: string) => (bookingId.value = v);
         <option>Today</option>
         <option>... Others</option>
       </select>
-      <div class="flex relative">
+      <div class="flex relative !text-lg">
         <Input placeholder="Search" />
         <Button size="icon" class="rounded-l-none absolute top-0 right-0">
           <Search :size="14" />

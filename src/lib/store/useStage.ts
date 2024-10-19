@@ -1,6 +1,6 @@
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
-export const useStage = (limit: number) => {
+export const useStage = (limit: number, onChange?: Function) => {
     const stage = ref(1);
 
     const nextStage = (condition = true) => {
@@ -12,6 +12,8 @@ export const useStage = (limit: number) => {
         if (stage.value <= 1) return;
         if (condition) stage.value -= 1
     }
+
+    watch([stage], () => onChange && onChange())
 
     return { stage, prevStage, nextStage }
 

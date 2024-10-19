@@ -1,42 +1,66 @@
 <script setup lang="ts">
-import { CalendarCell, CalendarCellTrigger, CalendarGrid, CalendarGridBody, CalendarGridHead, CalendarGridRow, CalendarHeadCell, CalendarHeader, CalendarHeading } from '@/components/ui/calendar'
+import {
+  CalendarCell,
+  CalendarCellTrigger,
+  CalendarGrid,
+  CalendarGridBody,
+  CalendarGridHead,
+  CalendarGridRow,
+  CalendarHeadCell,
+  CalendarHeader,
+  CalendarHeading,
+} from "@/components/ui/calendar";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
-import { cn } from '@/lib/utils'
-import { type DateValue, getLocalTimeZone, today } from '@internationalized/date'
-import { useVModel } from '@vueuse/core'
-import { CalendarRoot, type CalendarRootEmits, type CalendarRootProps, useDateFormatter, useForwardPropsEmits } from 'radix-vue'
-import { createDecade, createYear, toDate } from 'radix-vue/date'
-import { computed, type HTMLAttributes, type Ref } from 'vue'
+} from "@/components/ui/select";
+import { cn } from "@/lib/utils";
+import {
+  type DateValue,
+  getLocalTimeZone,
+  today,
+} from "@internationalized/date";
+import { useVModel } from "@vueuse/core";
+import {
+  CalendarRoot,
+  type CalendarRootEmits,
+  type CalendarRootProps,
+  useDateFormatter,
+  useForwardPropsEmits,
+} from "radix-vue";
+import { createDecade, createYear, toDate } from "radix-vue/date";
+import { computed, type HTMLAttributes, type Ref } from "vue";
+import Label from "../ui/label/Label.vue";
 
-const props = withDefaults(defineProps<CalendarRootProps & { class?: HTMLAttributes['class'] }>(), {
-  modelValue: undefined,
-  placeholder() {
-    return today(getLocalTimeZone())
-  },
-  weekdayFormat: 'short',
-})
-const emits = defineEmits<CalendarRootEmits>()
+const props = withDefaults(
+  defineProps<CalendarRootProps & { class?: HTMLAttributes["class"] }>(),
+  {
+    modelValue: undefined,
+    placeholder() {
+      return today(getLocalTimeZone());
+    },
+    weekdayFormat: "short",
+  }
+);
+const emits = defineEmits<CalendarRootEmits>();
 
 const delegatedProps = computed(() => {
-  const { class: _, placeholder: __, ...delegated } = props
+  const { class: _, placeholder: __, ...delegated } = props;
 
-  return delegated
-})
+  return delegated;
+});
 
-const placeholder = useVModel(props, 'modelValue', emits, {
+const placeholder = useVModel(props, "modelValue", emits, {
   passive: true,
   defaultValue: today(getLocalTimeZone()),
-}) as Ref<DateValue>
+}) as Ref<DateValue>;
 
-const forwarded = useForwardPropsEmits(delegatedProps, emits)
+const forwarded = useForwardPropsEmits(delegatedProps, emits);
 
-const formatter = useDateFormatter('en')
+const formatter = useDateFormatter("en");
 </script>
 
 <template>

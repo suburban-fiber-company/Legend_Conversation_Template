@@ -90,7 +90,8 @@ module.exports = {
       },
       fontFamily: {
         'source-sans-pro': ['Source Sans Pro', 'Poppins', 'Inter', 'serif', 'monospace'],
-        'inter': ['Inter', 'sans-serif', "Source Sans Pro", 'Poppins']
+        'inter': ['Inter', 'sans-serif', "Source Sans Pro", 'Poppins'],
+        'roboto': ['Roboto', 'sans-serif', "Source Sans Pro", 'Poppins']
       }
     },
   },

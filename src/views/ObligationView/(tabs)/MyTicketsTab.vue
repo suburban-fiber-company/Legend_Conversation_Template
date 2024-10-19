@@ -14,6 +14,7 @@ import ObligationBookingModal from "@/components/Modals/ObligationBookingModal.v
 import Button from "@/components/ui/button/Button.vue";
 import Input from "@/components/ui/input/Input.vue";
 import { Search } from "lucide-vue-next";
+import { ROUTES } from "@/router";
 
 interface TableData {
   ticketNumber: string;
@@ -85,13 +86,13 @@ const tableData: TableData[] = [
 
 <template>
   <div class="w-full flex gap-4 mt-1 justify-end">
-    <div class="flex gap-1 justify-end">
-      <select class="rounded px-3">
+    <div class="flex gap-1 justify-end text-lg">
+      <select class="rounded text-lg px-3">
         <option>Today</option>
         <option>... Others</option>
       </select>
       <div class="flex relative">
-        <Input placeholder="Search" />
+        <Input class="text-lg" placeholder="Search" />
         <Button size="icon" class="rounded-l-none absolute top-0 right-0">
           <Search :size="14" />
         </Button>
@@ -126,16 +127,13 @@ const tableData: TableData[] = [
         <TableCell class="text-center">{{ row.faultType }}</TableCell>
         <TableCell class="text-center">{{ row.date }}</TableCell>
         <TableCell class="text-center">{{ row.note }}</TableCell>
-        <!-- <TableCell
+        <TableCell
           class="flex justify-center items-center max-sm:flex-col gap-2"
         >
-          <Button
-            @click="setSendingEmail(row.emailAddress)"
-            variant="outline-default"
-            >Resend Email</Button
-          >
-          <Button @click="setBookingId(row.id)" variant="main">Book</Button>
-        </TableCell> -->
+          <router-link :to="ROUTES.Ticket(row.ticketNumber)">
+            <Button variant="link">View</Button>
+          </router-link>
+        </TableCell>
       </TableRow>
     </TableBody>
   </Table>

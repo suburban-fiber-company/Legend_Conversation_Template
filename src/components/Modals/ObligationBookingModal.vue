@@ -26,6 +26,7 @@ const handleClose = () => {
 };
 
 const selectedDate = ref<DateValue | undefined>(undefined);
+const showMessage = ref<boolean>(false);
 const localDate = computed(() => selectedDate.value?.toDate("Africa/Lagos"));
 
 const slotId = ref<number | null>(null);
@@ -35,14 +36,17 @@ const slots = [
   { id: 3, slotName: "Evening Slot", time: ["03:30pm", "06:30pm"] },
 ];
 
-const { stage, nextStage, prevStage } = useStage(3);
+const { stage, nextStage, prevStage } = useStage(3, () => {
+  showMessage.value = false;
+});
 
 const openSuccessDialog = computed(() => stage.value == 3);
 const handleCloseDialog = (isOpen: boolean = false) => {
   if (!isOpen) {
     stage.value = 1;
-    slotId.value  = null;
-    selectedDate.value  = undefined;
+    slotId.value = null;
+    selectedDate.value = undefined;
+    showMessage.value = false;
     handleClose();
   }
 };
@@ -55,6 +59,11 @@ const handleCloseDialog = (isOpen: boolean = false) => {
   >
     <template #default v-if="stage == 1">
       <MonthYearCalendar class="w-full border-0" v-model="selectedDate" />
+      <Label
+        v-if="!selectedDate && showMessage"
+        class="font-medium text-destructive"
+        >Date is required</Label
+      >
     </template>
 
     <template #default v-if="stage == 2">
@@ -90,6 +99,11 @@ const handleCloseDialog = (isOpen: boolean = false) => {
             >{{ slot.time[0] }} - {{ slot.time[1] }}</Button
           >
         </div>
+        <Label
+          v-if="!slotId && showMessage"
+          class="font-medium text-destructive"
+          >Slot is required</Label
+        >
       </div>
     </template>
 
@@ -100,7 +114,12 @@ const handleCloseDialog = (isOpen: boolean = false) => {
         </DialogClose>
         <Button
           v-if="stage == 1"
-          @click="() => nextStage(!!localDate)"
+          @click="
+            () => {
+              nextStage(!!localDate);
+              showMessage = true;
+            }
+          "
           :disable="!localDate"
           variant="main"
         >
@@ -109,7 +128,12 @@ const handleCloseDialog = (isOpen: boolean = false) => {
 
         <Button
           v-if="stage == 2"
-          @click="() => nextStage(!!localDate && !!slotId)"
+          @click="
+            () => {
+              nextStage(!!localDate && !!slotId);
+              showMessage = true;
+            }
+          "
           :disable="!localDate"
           variant="main"
         >
